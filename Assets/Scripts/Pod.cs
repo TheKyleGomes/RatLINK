@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public enum PodState
     {
@@ -10,6 +12,9 @@ public enum PodState
 public class Pod : MonoBehaviour
 {
     [SerializeField] private PodState currentState = PodState.InProgress;
+    [SerializeField] TMP_Text podStatus;
+    [SerializeField] TMP_Text podNumber;
+    [SerializeField] Image podBackground;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

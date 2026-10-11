@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6830480}
+  - component: {fileID: 6830481}
   m_Layer: 5
   m_Name: Pod
   m_TagString: Untagged
@@ -157,6 +158,22 @@ RectTransform:
   m_AnchoredPosition: {x: 57.5, y: -12.5}
   m_SizeDelta: {x: 335, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6830481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed40bc80c553f2346b49587a136f1ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pod
+  currentState: 0
+  podStatus: {fileID: 650437396}
+  podNumber: {fileID: 1783245128}
+  podBackground: {fileID: 869803087}
 --- !u!1 &650437394
 GameObject:
   m_ObjectHideFlags: 0

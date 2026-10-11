@@ -10,30 +10,41 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        levelTimer = 0.0f;
-        levelDifficulty = 0.0f;
-        resetDifficultyTimer();
+        RestartRun();
     }
 
     void Update()
     {
-        levelTimer += Time.deltaTime;
-        difficultyTimer -= Time.deltaTime;
+        UpdateTimers();
 
         if (difficultyTimer <= 0)
         {
-            increaseDifficulty();
-            resetDifficultyTimer();
+            IncreaseDifficulty();
+            ResetDifficultyTimer();
         }
     }
 
-    void increaseDifficulty()
+    void UpdateTimers()
+    {
+        levelTimer += Time.deltaTime;
+        difficultyTimer -= Time.deltaTime;
+    }
+
+    void RestartRun()
+    {
+        levelTimer = 0.0f;
+        levelDifficulty = 0.0f;
+        ResetDifficultyTimer();
+    }
+
+    void IncreaseDifficulty()
     {
         levelDifficulty += 0.1f;
     }
 
-    void resetDifficultyTimer()
+    void ResetDifficultyTimer()
     {
         difficultyTimer = 60.0f;
     }
+
 }

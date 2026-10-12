@@ -877,12 +877,16 @@ MonoBehaviour:
   startMaxDelay: 16
   fastestMinDelay: 3
   fastestMaxDelay: 6
+  startDistressCap: 2
+  maxDistressCap: 5
   levelTimer: 0
   levelDifficulty: 0
   minDelay: 0
   maxDelay: 0
+  distressCap: 0
   difficultyTimer: 0
   difficultyProgress: 0
+  difficultyIncreasesSinceCapIncrease: 0
 --- !u!4 &2091927223
 Transform:
   m_ObjectHideFlags: 0

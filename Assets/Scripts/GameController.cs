@@ -18,13 +18,20 @@ public class GameController : MonoBehaviour
     [SerializeField] private float fastestMaxDelay = 6.0f;
 
     [Space(5)]
+    [Header("↦ Distress Cap Settings")]
+    [SerializeField] private int startDistressCap = 2;
+    [SerializeField] private int maxDistressCap = 5;
+
+    [Space(5)]
     [Header("↦ Current Run (debug)")]
     public float levelTimer;
     public float levelDifficulty;
     [SerializeField] private float minDelay;
     [SerializeField] private float maxDelay;
+    [SerializeField] private int distressCap;
     [SerializeField] private float difficultyTimer;
     [SerializeField] private float difficultyProgress;
+    [SerializeField] private int difficultyIncreasesSinceCapIncrease = 0;
 
     void Start()
     {
@@ -55,16 +62,25 @@ public class GameController : MonoBehaviour
         levelTimer = 0.0f;
         levelDifficulty = 0.0f;
         ResetDifficultyTimer();
+        ResetDistressCap();
     }
 
     void IncreaseDifficulty()
     {
         levelDifficulty += 0.1f;
+        difficultyIncreasesSinceCapIncrease += 1;
+        CalculateDistressCap();
     }
 
     void ResetDifficultyTimer()
     {
         difficultyTimer = difficultyIncreaseInterval;
+    }
+
+    void ResetDistressCap()
+    {
+        distressCap = startDistressCap;
+        difficultyIncreasesSinceCapIncrease = 0;
     }
 
     void CalculateDifficultyProgress()
@@ -76,5 +92,17 @@ public class GameController : MonoBehaviour
     {
         minDelay = Mathf.Lerp(startMinDelay, fastestMinDelay, difficultyProgress);
         maxDelay = Mathf.Lerp(startMaxDelay, fastestMaxDelay, difficultyProgress);
+    }
+
+    void CalculateDistressCap()
+    {
+        if (difficultyIncreasesSinceCapIncrease >= 2)
+        {
+            if (distressCap < maxDistressCap)
+            {
+                distressCap += 1;
+            }
+            difficultyIncreasesSinceCapIncrease = 0;
+        }
     }
 }

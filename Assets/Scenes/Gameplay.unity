@@ -879,6 +879,8 @@ MonoBehaviour:
   fastestMaxDelay: 6
   levelTimer: 0
   levelDifficulty: 0
+  minDelay: 0
+  maxDelay: 0
   difficultyTimer: 0
   difficultyProgress: 0
 --- !u!4 &2091927223

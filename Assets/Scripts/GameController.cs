@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
     [Header("↦ Current Run (debug)")]
     public float levelTimer;
     public float levelDifficulty;
+    [SerializeField] private float minDelay;
+    [SerializeField] private float maxDelay;
     [SerializeField] private float difficultyTimer;
     [SerializeField] private float difficultyProgress;
 
@@ -33,6 +35,7 @@ public class GameController : MonoBehaviour
     {
         UpdateTimers();
         CalculateDifficultyProgress();
+        CalculateCurrentDelay();
 
         if (difficultyTimer <= 0)
         {
@@ -67,5 +70,11 @@ public class GameController : MonoBehaviour
     void CalculateDifficultyProgress()
     {
         difficultyProgress = Mathf.Clamp01(levelDifficulty / difficultyTarget);
+    }
+
+    void CalculateCurrentDelay()
+    {
+        minDelay = Mathf.Lerp(startMinDelay, fastestMinDelay, difficultyProgress);
+        maxDelay = Mathf.Lerp(startMaxDelay, fastestMaxDelay, difficultyProgress);
     }
 }

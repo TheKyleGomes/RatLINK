@@ -871,8 +871,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0970bc157aed6a4bbfebbe850e72b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  difficultyTarget: 0.5
+  difficultyIncreaseInterval: 60
+  startMinDelay: 8
+  startMaxDelay: 16
+  fastestMinDelay: 3
+  fastestMaxDelay: 6
   levelTimer: 0
   levelDifficulty: 0
+  difficultyTimer: 0
+  difficultyProgress: 0
 --- !u!4 &2091927223
 Transform:
   m_ObjectHideFlags: 0

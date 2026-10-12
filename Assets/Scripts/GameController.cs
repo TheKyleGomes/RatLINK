@@ -2,11 +2,27 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [Header("↦ Difficulty Settings")]
+    [Tooltip("Difficulty at which pod delays reach their fastest values.")]
+    public float difficultyTarget = 0.5f;
+    [SerializeField] private float difficultyIncreaseInterval = 60.0f;
 
+    [Space(5)]
+    [Header("↦ Start Pod Delays (secs)")]
+    [SerializeField] private float startMinDelay = 8.0f;
+    [SerializeField] private float startMaxDelay = 16.0f;
+
+    [Space(5)]
+    [Header("↦ Fastest Pod Delays (secs)")]
+    [SerializeField] private float fastestMinDelay = 3.0f;
+    [SerializeField] private float fastestMaxDelay = 6.0f;
+
+    [Space(5)]
+    [Header("↦ Current Run (debug)")]
     public float levelTimer;
     public float levelDifficulty;
-
-    private float difficultyTimer;
+    [SerializeField] private float difficultyTimer;
+    [SerializeField] private float difficultyProgress;
 
     void Start()
     {
@@ -16,6 +32,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         UpdateTimers();
+        CalculateDifficultyProgress();
 
         if (difficultyTimer <= 0)
         {
@@ -44,7 +61,11 @@ public class GameController : MonoBehaviour
 
     void ResetDifficultyTimer()
     {
-        difficultyTimer = 60.0f;
+        difficultyTimer = difficultyIncreaseInterval;
     }
 
+    void CalculateDifficultyProgress()
+    {
+        difficultyProgress = Mathf.Clamp01(levelDifficulty / difficultyTarget);
+    }
 }
